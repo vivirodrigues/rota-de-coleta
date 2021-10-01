@@ -410,7 +410,7 @@ def max_speed_factor(weight, speed):
     return weight
 
 
-def force(vehicle_mass, surface_floor, angle_inclination, speed = SPEED):
+def force(vehicle_mass, surface_floor, angle_inclination, speed = 0.83):
     """
     This function calculates the work according to the resistance forces,
     It includes aerodynamic force, rolling resistance, and gravity (px).

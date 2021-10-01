@@ -165,7 +165,6 @@ def closest_insertion(G, H, source, target, politic, search_alg):
         possibilities = set(nodes) - set(path)
 
     path.append(target)
-    print(path)
 
     if politic == 'weight':
         G = Graph.update_weight(G, VEHICLE_MASS)

@@ -1,5 +1,5 @@
 MAPS_DIRECTORY = 'data/maps/'
-RESULTS_DIRECTORY = 'data/results/'
+RESULTS_DIRECTORY = 'data/results/SP/18/'
 FILE_NAME_OSM = 'map.osm'
 VEHICLE = 'pedestrian'
 VEHICLE_MASS = 100

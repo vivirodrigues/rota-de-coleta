@@ -420,7 +420,7 @@ def adjacent_nodes(coordinate):
     """
 
     If the input coordinate is inside a Open Street Map
-    (OSM) way and is not a node, this function finds the
+    (OSM) way and it is not a node, this function finds the
     adjacent nodes of the input coordinate. If the input
     coordinate is a node, it returns the id of the node.
 

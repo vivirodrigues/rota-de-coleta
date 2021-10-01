@@ -46,7 +46,6 @@ def results(heuristics, alg, politic, extension, n_points):
     cdfs = []
     for k in politic:
         for j in heuristics:
-            # print(alg, k, j)
             files_result = Results.create_list_files(k, alg, j, '', extension, n_points)
             x, cdf = cdf_values(files_result)
             xs.append(x)
@@ -61,24 +60,36 @@ def graphic(n_points):
 
     xs, cdfs = results(heuristics, alg, politics, '.json', n_points)
 
+    xs1, cdfs1 = results(heuristics, alg, politics, '.json', n_points + 100)
+
     fig = plt.figure()
-    plt.xlim(-7, 140)
+    plt.xlim(-7, 350)
     plt.xticks(size=13)
     plt.yticks(size=13)
     plt.grid(True, which="both", ls="-", linewidth=0.1, color='0.10', zorder=0)
 
-    #plt.errorbar(xs[0], cdfs[0], label='Vizinho mais próximo PMT', color='tab:orange', ls="-", linewidth=1.1)
-    plt.errorbar(xs[1], cdfs[1], label='Inserção do mais próximo PMT', color='tab:blue', ls="-", linewidth=1.1)
-    #plt.errorbar(xs[2], cdfs[2], label='Inserção do mais distante PMT', color='tab:green', ls="-", linewidth=1.1)  # marker='P'
-    #plt.errorbar(xs[3], cdfs[3], label='Vizinho mais próximo PMI', color='tab:pink', ls="-", linewidth=1.1)
-    plt.errorbar(xs[4], cdfs[4], label='Inserção do mais próximo PMI', color='tab:red', ls="-", linewidth=1.1)
-    #plt.errorbar(xs[5], cdfs[5], label='Inserção do mais distante PMI', color='k', ls="-", linewidth=1.1)
-    #plt.errorbar(xs[6], cdfs[6], label='Vizinho mais próximo PMT', color='tab:pink', ls="-", linewidth=1.1)
-    plt.errorbar(xs[7], cdfs[7], label='Inserção do mais próximo PMI', color='tab:red', ls="-", linewidth=1.1)
-    #plt.errorbar(xs[8], cdfs[8], label='Inserção do mais distante PMT', color='k', ls="-", linewidth=1.1)
+    plt.errorbar(xs1[0], cdfs1[0], label='PMT Belém', color='tab:red', ls="-", linewidth=1.5)  # Vizinho mais próximo
+    # plt.errorbar(xs1[1], cdfs1[1], label='PMT Belém', color='tab:red', ls="-", linewidth=1.1) # Inserção do mais próximo
+    # plt.errorbar(xs1[2], cdfs1[2], label='PMT Belém', color='tab:red', ls="-", linewidth=1.1)  # marker='P' # Inserção do mais distante
+    plt.errorbar(xs1[3], cdfs1[3], label='PMI Belém', color='k', ls="-", linewidth=1.5)  # Vizinho mais próximo
+    # plt.errorbar(xs1[4], cdfs1[4], label='PMI Belém', color='k', ls="-", linewidth=1.1) # Inserção do mais próximo
+    # plt.errorbar(xs1[5], cdfs1[5], label='PMI Belém', color='k', ls="-", linewidth=1.1) # Inserção do mais distante
+    plt.errorbar(xs1[6], cdfs1[6], label='PMD Belém', color='tab:pink', ls="-", linewidth=1.5)  # Vizinho mais próximo
+    # plt.errorbar(xs1[7], cdfs1[7], label='PMD Belém', color='tab:pink', ls="-", linewidth=1.1) # Inserção do mais próximo
+    # plt.errorbar(xs1[8], cdfs1[8], label='PMD Belém', color='k', ls="-", linewidth=1.1) # Inserção do mais distante
 
-    ylabel = 'Empirical Cumulative Distribution Function [%]'
-    xlabel = 'Instant Power [W]'
+    plt.errorbar(xs[0], cdfs[0], label='PMT SP', color='tab:orange', ls="-", linewidth=1.5)  # Vizinho mais próximo
+    # plt.errorbar(xs[1], cdfs[1], label='PMT SP', color='tab:orange', ls="-", linewidth=1.1) # Inserção do mais próximo
+    # plt.errorbar(xs[2], cdfs[2], label='PMT SP', color='tab:orange', ls="-", linewidth=1.1)  # marker='P' # Inserção do mais distante
+    plt.errorbar(xs[3], cdfs[3], label='PMI SP', color='tab:green', ls="-", linewidth=1.5)  # Vizinho mais próximo
+    # plt.errorbar(xs[4], cdfs[4], label='PMI SP', color='tab:green', ls="-", linewidth=1.1) # Inserção do mais próximo
+    # plt.errorbar(xs[5], cdfs[5], label='PMI SP', color='tab:green', ls="-", linewidth=1.1) # Inserção do mais distante
+    plt.errorbar(xs[6], cdfs[6], label='PMD SP', color='tab:blue', ls="-", linewidth=1.5)  # Vizinho mais próximo
+    # plt.errorbar(xs[7], cdfs[7], label='PMD SP', color='tab:blue', ls="-", linewidth=1.1) # Inserção do mais próximo
+    # plt.errorbar(xs[8], cdfs[8], label='PMD SP', color='tab:blue', ls="-", linewidth=1.1) # Inserção do mais distante
+
+    ylabel = 'Função de Distribuição Acumulada Empírica [%]'
+    xlabel = 'Potência Instantânea [W]'
 
     plt.ylabel(ylabel, fontweight="bold", fontsize=11)
     plt.xlabel(xlabel, fontweight="bold", fontsize=11)
@@ -88,4 +99,4 @@ def graphic(n_points):
 
 
 if __name__ == '__main__':
-    graphic(24)
+    graphic(18)

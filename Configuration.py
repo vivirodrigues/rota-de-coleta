@@ -186,7 +186,7 @@ def combination(function, G, H, node_source, node_target, politic, alg, stop_poi
     file_name = file_name + '_' + politic + '_' + alg + '_' + str(function)
 
     # it simulates the 'carrinheiro' on the route and returns the total distance traveled
-    total_length = Simulation.start_simulation('sumo', net_file, out, sumo_route, G, dict_edges_net, file_name,
+    total_length = Simulation.start_simulation('sumo-gui', net_file, out, sumo_route, G, dict_edges_net, file_name,
                                     edges_mass_increments, politic)
     result_work.update([('total_length', float(total_length))])
     result_work.update([('total_time', float(time_total))])
@@ -273,7 +273,7 @@ def create_route(stop_points, material_weights, json_files, seed, n=None, n_poin
         G, nodes_coords, nodes_mass_increment = Graph.config_graph(G, geotiff_name, stop_points, material_weights,
                                                                    osm_file, G_file, net_file)
     ###########
-
+    
     # the starting point is the first collect point of the vector
     index_source = list(nodes_coords.values()).index(stop_points[0])
     node_source = list(nodes_coords.keys())[index_source]

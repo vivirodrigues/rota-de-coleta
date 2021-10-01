@@ -111,8 +111,6 @@ def run(route, G, dict_edges_net, file_name_json, edges_weight, impedance):
     pdf_power_dict = {}
     pdf_max_speed_dict = {}
 
-    incline = {}
-    inclination = []
     total = 0
 
     total_length = 0
@@ -156,7 +154,6 @@ def run(route, G, dict_edges_net, file_name_json, edges_weight, impedance):
 
             if step > 1 and edge_id[0] != ":":
 
-                inclination.append(z)
                 power.append(calculate_power(G, dict_edges_net, edge_id, vehicle_weight, speed))
 
                 max_speeds.append(time_streets(G, dict_edges_net, edge_id))
@@ -199,10 +196,6 @@ def run(route, G, dict_edges_net, file_name_json, edges_weight, impedance):
         sett = {i: power[i]}
         dicionario_power.update(sett)
 
-    for i in range(len(inclination)):
-        set2 = {i: inclination[i]}
-        incline.update(set2)
-
     # PDF
     max_power = max(power)
     pdf_power = [0] * (int(max_power) + 10)
@@ -232,7 +225,6 @@ def run(route, G, dict_edges_net, file_name_json, edges_weight, impedance):
     write_json(pdf_power_dict, file_name_json + '_pdf' + '_speed_')
     write_json(pdf_max_speed_dict, file_name_json + '_pdf_speeds_')
     write_json(dicionario_power, file_name_json)
-    write_json(incline, file_name_json + '_i')
 
     return total_length
 

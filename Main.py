@@ -13,16 +13,16 @@ def get_seed(seed_id):
     """
 
     seeds = [1859168769, 1598189534, 1871883252,
-             2125204119, 2041095833, 358485174,
+             2125204119, 358485174,
              1695858027, 762772169, 437720306,
-             939612284, 1998078925, 981631283, # 1973272912
+             939612284, 1998078925, 981631283, # 2041095833
              1024155645, 558746720, 1349341884,
-             678622600, 1319566104, 722594620,
+             678622600, 722594620,
              1700738670, 1995749838, 346983590,
              565528207, 513791680, 2081634991,
              1769370802, 349544396, 1996610406,
              1973272912,1972392646, 188312339,
-             934100682,222735214, 2101442385,
+             934100682, 2101442385, 222735214,
              2009044369, 1895218768, 701857417,
              89865291, 144443207, 720236707,
              822780843, 898723423, 1644999263,
@@ -34,7 +34,8 @@ def get_seed(seed_id):
              1384311643, 1000004583, 1147024708,
              538474442, 1936856304, 1996632795,
              1936856304, 1822174485, 1859168769,
-             605846893]
+             605846893, 2041095833, 1319566104,
+             1996610406]
     return seeds[seed_id]
 
 
@@ -58,7 +59,7 @@ def main():
     random.seed(get_seed(0))
 
     # scenarios: 'Belo Horizonte' and 'Belem'
-    city = 'Belo Horizonte'
+    city = 'Sao Paulo'
 
     # mean of the gaussian function
     if city == 'Belo Horizonte':
@@ -71,8 +72,8 @@ def main():
         mean_lon = [-38.487310]
         mean_lat = [-12.947855]
     else:
-        mean_lon = [-48.47000]
-        mean_lat = [-1.46000]
+        mean_lon = [-46.64842]
+        mean_lat = [-23.56363]
 
     # standard deviation of the gaussian function
     sigma = 0.002 #0.005
@@ -90,12 +91,12 @@ def main():
     material_weights.insert(0, (0, 'Kg'))
 
     # number of repetitions of the simulations
-    n_seeds = 14
+    n_seeds = 1
 
     json_files = []
     materials = {}
 
-    for a in range(10, n_seeds):
+    for a in range(0, n_seeds):
 
         random.seed(get_seed(a))
         print(get_seed(a))
